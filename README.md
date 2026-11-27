@@ -7,7 +7,7 @@ A Persian RTL online grocery shop built with React, TypeScript, and Vite.
 **Live:** [https://refactor-shop.vercel.app](https://refactor-shop.vercel.app)
 
 
-
+![Mobile](./docs/mobile.png)
 ## Run
 
 ```bash
