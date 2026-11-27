@@ -1,14 +1,22 @@
-# shops/refactor/.github/workflows/deploy.yml: it only runs in your own refactor-shop repo,
-# where the shop folder is the repo root. Nothing to edit in this file.
-# Secrets (Settings  Secrets and variables  Actions): VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID
+
+# This workflow runs in your own refactor-shop repository.
+# The shop folder is the repository root.
+# Nothing to edit in this file.
+#
+# Required secrets:
+# Settings > Secrets and variables > Actions
+# VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID
+
 name: CI and deploy
 
 on:
   pull_request:
   push:
     branches: [main]
+
 permissions:
   contents: read
+
 concurrency:
   group: deploy-${{ github.ref }}
   cancel-in-progress: true
@@ -33,7 +41,8 @@ jobs:
       - run: npm run build
 
   docker:
-    # proves the Dockerfile builds, with no Docker on your laptop (runners have it)
+    # Checks whether the Dockerfile builds successfully.
+    # GitHub runners already have Docker installed.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -41,7 +50,7 @@ jobs:
 
   publish:
     needs: check
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -63,7 +72,8 @@ jobs:
 
   deploy:
     needs: check
-    # a PR from a fork has no secrets: skip the deploy, keep the check
+    # Pull requests from forks do not have access to secrets.
+    # Skip deployment for fork PRs, but keep the checks running.
     if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     env:
