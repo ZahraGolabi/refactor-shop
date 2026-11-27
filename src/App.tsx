@@ -44,4 +44,7 @@ declare module '@tanstack/react-router' {
     router: typeof router
   }
 }
+export default function App() {
+  return <RouterProvider router={router} />
+}
 
