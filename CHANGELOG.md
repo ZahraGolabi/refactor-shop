@@ -1,8 +1,7 @@
-# Changelog
+## [1.0.1] - 2026-11-28
 
-All notable changes to this project will be documented in this file.
-
-## [1.0.0] - 2026-11-23
+### Changed
+- Show the original price on product cards.
 
 ### Added
 - Initial release of the Persian RTL grocery shop.
