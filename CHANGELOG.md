@@ -1,6 +1,15 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## [1.0.2] - 2026-11-28
+
+### Fixed
+- Reverted 1.0.1: discounted products show the discounted price again.
+
+## [1.0.1] - 2026-11-28
+
+### Changed
+- Show the original price on product cards (introduced a bug, reverted in 1.0.2).
 
 ## [1.0.0] - 2026-11-23
 
