@@ -8,6 +8,7 @@ export default function Price({ price, originalPrice, discounted }: PriceProps) 
       {discounted && (
         <del><span className="sr-only">قیمت قبل از تخفیف: </span>{formatNumber(originalPrice)}</del>
       )}
-<strong>{formatNumber(discounted ? originalPrice : price)}<small>تومان</small></strong>    </p>
+      <strong>{formatNumber(price)}<small>تومان</small></strong>
+    </p>
   )
 }
